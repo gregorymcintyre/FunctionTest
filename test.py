@@ -9,9 +9,12 @@ and compares result, displaying expected and actual returns if test is not passe
 
 '''
 
-def test(func, inp, out):
+#def test(func, inp, out):
+def test(func, out, *inp):
     print('Testing ... ', end='')
-    if func(inp) == out:
+
+#    if func(inp) == out:
+    if func(*inp) == out:
         print('\x1b[6;30;42m' + '[Passed]' + '\x1b[0m')
         return True
 
