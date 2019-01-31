@@ -14,13 +14,15 @@ def test(func, out, *inp):
     print('Testing ... ', end='')
 
 #    if func(inp) == out:
-    if func(*inp) == out:
-        print('\x1b[6;30;42m' + '[Passed]' + '\x1b[0m')
-        return True
+    try:
+        if func(*inp) == out:
+            print('\x1b[6;30;42m' + '[Passed]' + '\x1b[0m')
+            return True
 
-    else:
-        print('\x1b[6;30;41m' + '[Failed]' + '\x1b[0m')
-        print('Expected: ' + str(inp) + ' => ' + str(out))
-        print('Actual: ' + str(inp) + ' => ' + str(func(inp))) 
-        return False
-
+        else:
+            print('\x1b[6;30;41m' + '[Failed]' + '\x1b[0m')
+            print('Expected: ' + str(inp) + ' => ' + str(out))
+            print('Actual: ' + str(inp) + ' => ' + str(func(inp))) 
+            return False
+    except Exception as e:
+        print(e.message)
